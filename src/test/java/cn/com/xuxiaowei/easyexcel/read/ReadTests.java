@@ -42,4 +42,14 @@ class ReadTests {
         EasyExcel.read(simpleRead, User.class, new UserDataListener()).sheet("Sheet2").doRead();
     }
 
+    /**
+     * 增加异常数据处理
+     */
+    @Test
+    void customUserReadSheet() {
+        String simpleRead = projectPath + "/easyexcel/read/simpleRead.xlsx";
+        log.debug("读取路径：{}", simpleRead);
+        EasyExcel.read(simpleRead, User.class, new CustomUserDataListener()).sheet("Sheet3").doRead();
+    }
+
 }
