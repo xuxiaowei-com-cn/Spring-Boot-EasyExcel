@@ -79,9 +79,7 @@ class UserDataListener extends AnalysisEventListener<User> {
         log.debug("{}条数据，开始存储数据库！", list.size());
 
         // 这里也要保存数据，确保最后遗留的数据也存储到数据库
-        list.parallelStream().forEach(u -> {
-            log.debug(String.valueOf(u));
-        });
+        list.parallelStream().forEach(u -> log.debug(String.valueOf(u)));
 
         log.info("所有数据解析完成！");
     }
@@ -89,9 +87,7 @@ class UserDataListener extends AnalysisEventListener<User> {
     private void saveUserData() {
         log.debug("{}条数据，开始存储数据库！", list.size());
 
-        list.parallelStream().forEach(u -> {
-            log.debug(String.valueOf(u));
-        });
+        list.parallelStream().forEach(u -> log.debug(String.valueOf(u)));
 
         log.info("存储数据库成功！");
     }
