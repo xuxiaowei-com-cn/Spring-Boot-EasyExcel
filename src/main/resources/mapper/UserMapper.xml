@@ -7,6 +7,7 @@
         <id column="user_id" property="userId"/>
         <result column="username" property="username"/>
         <result column="password" property="password"/>
+        <result column="sex" property="sex"/>
         <result column="deleted" property="deleted"/>
     </resultMap>
 
