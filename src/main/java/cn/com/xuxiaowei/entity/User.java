@@ -50,8 +50,8 @@ public class User implements Serializable {
      * 使用 {@link ExcelProperty#value()} 和 {@link ExcelProperty#index()} 设置该属性对应的列，
      * 但 {@link ExcelProperty#index()} 优先级更高，而 {@link ExcelProperty#value()} 将被忽略
      * <p>
-     * 为了测试，在 Excel 中第 4 列（从0开始）设置了测试数据，列名为 test ,但是由于设置了 {@link ExcelProperty#index()}，
-     * 将读取第 3 列（从0开始），而不会读取 test 所在的第 4 列(从0开始)
+     * 为了测试，在 Excel 中第 5 列（从0开始）设置了测试数据，列名为 test ,但是由于设置了 {@link ExcelProperty#index()}，
+     * 将读取第 3 列（从0开始），而不会读取 test 所在的第 5 列(从0开始)
      */
     @ExcelProperty(value = "test", index = 2)
     @TableField("password")
@@ -60,7 +60,7 @@ public class User implements Serializable {
     /**
      * 性别，0 未知，1 男， 2 女
      */
-    @ExcelProperty(value = "sex")
+    @ExcelProperty(index = 4)
     @TableField("sex")
     private Integer sex;
 
@@ -73,7 +73,7 @@ public class User implements Serializable {
     @TableLogic
     private Boolean deleted;
 
-
+    public static final String USERID = "userId";
     public static final String USER_ID = "user_id";
 
     public static final String USERNAME = "username";
