@@ -144,7 +144,10 @@ class CustomUserDataListener extends AnalysisEventListener<User> {
                 }
             }
 
-            log.debug(String.valueOf(user));
+            log.debug("异常数据处理结果：{}", user);
+
+            list.add(user);
+
         } else {
             super.onException(exception, context);
         }
