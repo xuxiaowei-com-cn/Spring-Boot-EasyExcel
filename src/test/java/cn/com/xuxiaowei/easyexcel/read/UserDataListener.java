@@ -1,6 +1,7 @@
 package cn.com.xuxiaowei.easyexcel.read;
 
 import cn.com.xuxiaowei.entity.User;
+import cn.com.xuxiaowei.service.IUserService;
 import com.alibaba.excel.context.AnalysisContext;
 import com.alibaba.excel.event.AnalysisEventListener;
 import com.alibaba.excel.read.metadata.holder.ReadRowHolder;
@@ -23,6 +24,8 @@ class UserDataListener extends AnalysisEventListener<User> {
 
     private User user;
 
+    private IUserService iUserService;
+
     List<User> list = new ArrayList<>();
 
     /**
@@ -42,6 +45,13 @@ class UserDataListener extends AnalysisEventListener<User> {
      */
     public UserDataListener(User user) {
         this.user = user;
+    }
+
+    /**
+     * 使用 Spring 时，使用构造器将 Spring 管理的 Bean 传入
+     */
+    public UserDataListener(IUserService iUserService) {
+        this.iUserService = iUserService;
     }
 
     /**
@@ -81,6 +91,8 @@ class UserDataListener extends AnalysisEventListener<User> {
         // 这里也要保存数据，确保最后遗留的数据也存储到数据库
         list.parallelStream().forEach(u -> log.debug(String.valueOf(u)));
 
+        saveUserList();
+
         log.info("所有数据解析完成！");
     }
 
@@ -89,7 +101,15 @@ class UserDataListener extends AnalysisEventListener<User> {
 
         list.parallelStream().forEach(u -> log.debug(String.valueOf(u)));
 
+        saveUserList();
+
         log.info("存储数据库成功！");
+    }
+
+    private void saveUserList() {
+        if (iUserService != null) {
+            list.parallelStream().forEach(u -> iUserService.save(u));
+        }
     }
 
 }
