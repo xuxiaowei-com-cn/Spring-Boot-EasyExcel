@@ -10,6 +10,12 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import javax.annotation.Resource;
 
+/**
+ * 用户 User 测试类
+ *
+ * @author xuxiaowei
+ * @since 0.0.1
+ */
 @Slf4j
 @SpringBootTest
 class IUserServiceTests {
