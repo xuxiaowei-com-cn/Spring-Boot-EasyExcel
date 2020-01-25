@@ -1,5 +1,6 @@
 package cn.com.xuxiaowei.easyexcel.write;
 
+import cn.com.xuxiaowei.entity.NoBooleanUser;
 import cn.com.xuxiaowei.entity.User;
 import cn.com.xuxiaowei.enums.TypeEnum;
 import cn.com.xuxiaowei.service.IUserService;
@@ -9,12 +10,14 @@ import com.alibaba.excel.support.ExcelTypeEnum;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.poi.poifs.filesystem.POIFSFileSystem;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintStream;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -48,6 +51,46 @@ class WriteCsvTests {
 
         List<User> list = iUserService.list();
         EasyExcel.write(xlsFileName, User.class).sheet("sheet1").doWrite(list);
+
+        // XLS 文件
+        POIFSFileSystem poifsFileSystem = new POIFSFileSystem(new File(xlsFileName));
+
+        // CSV 文件
+        PrintStream printStream = new PrintStream(csvFileName);
+
+        // 创建一个新的 XLS --> CSV转换器
+        XlsCsvUtils xlsCsvUtils = new XlsCsvUtils(poifsFileSystem, printStream, -1);
+
+        // 开始将 XLS 文件处理为 CSV
+        xlsCsvUtils.process();
+    }
+
+    /**
+     * xls 转 csv
+     * <p>
+     * Boolean 使用 String 类型
+     */
+    @Test
+    public void noBooleanWrite() throws IOException {
+
+        String fileName = projectPath + "/easyexcel/write/simpleWrite_" + System.currentTimeMillis();
+
+        String xlsFileName = fileName + ExcelTypeEnum.XLS.getValue();
+        String csvFileName = fileName + TypeEnum.CSV.getValue();
+
+        List<User> list = iUserService.list();
+        List<NoBooleanUser> noBooleanUsers = new ArrayList<>();
+
+        for (User user : list) {
+            NoBooleanUser noBooleanUser = new NoBooleanUser();
+            BeanUtils.copyProperties(user, noBooleanUser);
+
+            noBooleanUser.setDeleted(user.getDeleted().toString());
+
+            noBooleanUsers.add(noBooleanUser);
+        }
+
+        EasyExcel.write(xlsFileName, NoBooleanUser.class).sheet("sheet1").doWrite(noBooleanUsers);
 
         // XLS 文件
         POIFSFileSystem poifsFileSystem = new POIFSFileSystem(new File(xlsFileName));
