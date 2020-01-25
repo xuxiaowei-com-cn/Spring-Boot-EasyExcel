@@ -8,10 +8,12 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 /**
  * 测试 Excel 数据读取
+ * <p>
+ * xlsx 格式
  */
 @Slf4j
 @SpringBootTest
-class ReadTests {
+class ReadXlsxTests {
 
     /**
      * 读取本地项目文件夹路径（Spring Boot）
