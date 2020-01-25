@@ -58,6 +58,13 @@ public class User implements Serializable {
     private String password;
 
     /**
+     * 性别，0 未知，1 男， 2 女
+     */
+    @ExcelProperty(value = "sex")
+    @TableField("sex")
+    private Integer sex;
+
+    /**
      * 是否逻辑删除，1 已删除，0 未删除，默认为 0，数据库类型为 tinyint，长度为 1，对应实体类为 Boolean，0 为 false，1 为 true
      * <p>
      * 未使用 {@link ExcelProperty} , 按照顺序将数据填入到该属性
@@ -72,6 +79,8 @@ public class User implements Serializable {
     public static final String USERNAME = "username";
 
     public static final String PASSWORD = "password";
+
+    public static final String SEX = "sex";
 
     public static final String DELETED = "deleted";
 
