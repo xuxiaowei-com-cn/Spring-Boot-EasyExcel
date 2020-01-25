@@ -203,7 +203,7 @@ class CustomUserDataListener extends AnalysisEventListener<User> {
                     // 设置默认值
                     declaredField.set(user, 900000000000000L + System.currentTimeMillis());
                 } else {
-                    declaredField.set(user, Long.valueOf(String.valueOf(numberValue)));
+                    declaredField.set(user, numberValue.longValue());
                 }
 
                 break;
@@ -216,7 +216,7 @@ class CustomUserDataListener extends AnalysisEventListener<User> {
                     declaredField.set(user, 0);
                 } else {
                     if (BigDecimal.ZERO.equals(numberValue) || BigDecimal.ONE.equals(numberValue) || new BigDecimal(2).equals(numberValue)) {
-                        declaredField.set(user, Integer.valueOf(String.valueOf(numberValue)));
+                        declaredField.set(user, numberValue.intValue());
                     } else {
                         declaredField.set(user, 0);
                     }
