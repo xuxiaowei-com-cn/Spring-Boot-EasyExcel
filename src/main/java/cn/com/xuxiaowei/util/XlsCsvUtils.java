@@ -25,6 +25,16 @@ import java.util.List;
  */
 public class XlsCsvUtils implements HSSFListener {
 
+    /**
+     * 是否需要显示 sheet 名
+     */
+    private boolean sheetName = true;
+
+    /**
+     * 是否在开始需要一个空行
+     */
+    private boolean blankline = true;
+
     private int minColumns;
     private POIFSFileSystem fs;
     private PrintStream output;
@@ -132,11 +142,15 @@ public class XlsCsvUtils implements HSSFListener {
                     if (orderedBsrs == null) {
                         orderedBsrs = BoundSheetRecord.orderByBofPosition(boundSheetRecords);
                     }
-                    output.println();
-                    output.println(
-                            orderedBsrs[sheetIndex].getSheetname() +
-                                    " [" + (sheetIndex + 1) + "]:"
-                    );
+                    if (blankline) {
+                        output.println();
+                    }
+                    if (sheetName) {
+                        output.println(
+                                orderedBsrs[sheetIndex].getSheetname() +
+                                        " [" + (sheetIndex + 1) + "]:"
+                        );
+                    }
                 }
                 break;
 
@@ -292,6 +306,22 @@ public class XlsCsvUtils implements HSSFListener {
 
     public void setOutputFormulaValues(boolean outputFormulaValues) {
         this.outputFormulaValues = outputFormulaValues;
+    }
+
+    public boolean isSheetName() {
+        return sheetName;
+    }
+
+    public void setSheetName(boolean sheetName) {
+        this.sheetName = sheetName;
+    }
+
+    public boolean isBlankline() {
+        return blankline;
+    }
+
+    public void setBlankline(boolean blankline) {
+        this.blankline = blankline;
     }
 
 }

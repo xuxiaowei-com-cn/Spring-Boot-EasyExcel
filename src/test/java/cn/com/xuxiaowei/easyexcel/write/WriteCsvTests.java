@@ -61,6 +61,12 @@ class WriteCsvTests {
         // 创建一个新的 XLS --> CSV转换器
         XlsCsvUtils xlsCsvUtils = new XlsCsvUtils(poifsFileSystem, printStream, -1);
 
+        // 是否在开始需要一个空行
+        xlsCsvUtils.setBlankline(false);
+
+        // 是否需要显示 sheet 名
+        xlsCsvUtils.setSheetName(false);
+
         // 开始将 XLS 文件处理为 CSV
         xlsCsvUtils.process();
     }
@@ -100,6 +106,12 @@ class WriteCsvTests {
 
         // 创建一个新的 XLS --> CSV转换器
         XlsCsvUtils xlsCsvUtils = new XlsCsvUtils(poifsFileSystem, printStream, -1);
+
+        // 是否在开始需要一个空行
+        xlsCsvUtils.setBlankline(false);
+
+        // 是否需要显示 sheet 名
+        xlsCsvUtils.setSheetName(false);
 
         // 开始将 XLS 文件处理为 CSV
         xlsCsvUtils.process();
