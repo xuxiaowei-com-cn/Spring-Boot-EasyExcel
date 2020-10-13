@@ -36,7 +36,8 @@ class WriteCsvTests {
     /**
      * 写入本地项目文件夹路径（Spring Boot）
      */
-    private String projectPath = System.getProperty("user.dir");
+    private final String PROJECT_PATH = System.getProperty("user.dir");
+
 
     /**
      * xls 转 csv
@@ -44,7 +45,7 @@ class WriteCsvTests {
     @Test
     public void simpleWrite() throws IOException {
 
-        String fileName = projectPath + "/easyexcel/write/simpleWrite_" + System.currentTimeMillis();
+        String fileName = PROJECT_PATH + "/easyexcel/write/simpleWrite_" + System.currentTimeMillis();
 
         String xlsFileName = fileName + ExcelTypeEnum.XLS.getValue();
         String csvFileName = fileName + TypeEnum.CSV.getValue();
@@ -79,7 +80,7 @@ class WriteCsvTests {
     @Test
     public void noBooleanWrite() throws IOException {
 
-        String fileName = projectPath + "/easyexcel/write/simpleWrite_" + System.currentTimeMillis();
+        String fileName = PROJECT_PATH + "/easyexcel/write/simpleWrite_" + System.currentTimeMillis();
 
         String xlsFileName = fileName + ExcelTypeEnum.XLS.getValue();
         String csvFileName = fileName + TypeEnum.CSV.getValue();

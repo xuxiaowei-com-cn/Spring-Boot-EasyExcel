@@ -27,14 +27,14 @@ class WriteXlsTests {
     /**
      * 写入本地项目文件夹路径（Spring Boot）
      */
-    private String projectPath = System.getProperty("user.dir");
+    private final String PROJECT_PATH = System.getProperty("user.dir");
 
     /**
      * 最简单的写
      */
     @Test
     public void simpleWrite() {
-        String simpleWrite = projectPath + "/easyexcel/write/simpleWrite_" + System.currentTimeMillis() + ExcelTypeEnum.XLS.getValue();
+        String simpleWrite = PROJECT_PATH + "/easyexcel/write/simpleWrite_" + System.currentTimeMillis() + ExcelTypeEnum.XLS.getValue();
         List<User> list = iUserService.list();
         EasyExcel.write(simpleWrite, User.class).sheet("sheet1").doWrite(list);
     }

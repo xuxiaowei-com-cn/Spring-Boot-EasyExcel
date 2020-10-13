@@ -21,7 +21,8 @@ class ReadCsvTests {
     /**
      * 读取本地项目文件夹路径（Spring Boot）
      */
-    private String projectPath = System.getProperty("user.dir");
+    private final String PROJECT_PATH = System.getProperty("user.dir");
+
 
     /**
      * <p>
@@ -29,7 +30,7 @@ class ReadCsvTests {
      */
     @Test
     void simpleRead() {
-        String simpleRead = projectPath + "/easyexcel/read/simpleRead.csv";
+        String simpleRead = PROJECT_PATH + "/easyexcel/read/simpleRead.csv";
         log.debug("读取路径：{}", simpleRead);
         EasyExcel.read(simpleRead, User.class, new UserDataListener()).sheet().doRead();
     }

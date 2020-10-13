@@ -21,7 +21,7 @@ class ReadXls50_95Tests {
     /**
      * 读取本地项目文件夹路径（Spring Boot）
      */
-    private String projectPath = System.getProperty("user.dir");
+    private final String PROJECT_PATH = System.getProperty("user.dir");
 
 
     /**
@@ -31,7 +31,7 @@ class ReadXls50_95Tests {
      */
     @Test
     void simpleRead() {
-        String simpleRead = projectPath + "/easyexcel/read/simpleRead 50-95.xls";
+        String simpleRead = PROJECT_PATH + "/easyexcel/read/simpleRead 50-95.xls";
         log.debug("读取路径：{}", simpleRead);
         EasyExcel.read(simpleRead, User.class, new UserDataListener()).sheet().doRead();
     }
@@ -43,7 +43,7 @@ class ReadXls50_95Tests {
      */
     @Test
     void simpleReadSheet() {
-        String simpleRead = projectPath + "/easyexcel/read/simpleRead 50-95.xls";
+        String simpleRead = PROJECT_PATH + "/easyexcel/read/simpleRead 50-95.xls";
         log.debug("读取路径：{}", simpleRead);
         EasyExcel.read(simpleRead, User.class, new UserDataListener()).sheet("Sheet2").doRead();
     }
@@ -53,7 +53,7 @@ class ReadXls50_95Tests {
      */
     @Test
     void customUserReadSheet() {
-        String simpleRead = projectPath + "/easyexcel/read/simpleRead 50-95.xls";
+        String simpleRead = PROJECT_PATH + "/easyexcel/read/simpleRead 50-95.xls";
         log.debug("读取路径：{}", simpleRead);
         EasyExcel.read(simpleRead, User.class, new CustomUserDataListener()).sheet("Sheet3").doRead();
     }
