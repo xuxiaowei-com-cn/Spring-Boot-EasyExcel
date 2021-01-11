@@ -31,7 +31,7 @@ import java.util.Map;
 @Slf4j
 class CustomUserDataListener extends AnalysisEventListener<User> {
 
-    private User user;
+    private final User user;
 
     List<User> list = new ArrayList<>();
 
@@ -137,11 +137,7 @@ class CustomUserDataListener extends AnalysisEventListener<User> {
                 Integer key = entry.getKey();
 
                 // 当遍历的列与错误的列形同时，处理数据
-                if (key.equals(columnIndex)) {
-                    customData(currentRowAnalysisResultLinkedHashMap, entry, user, true);
-                } else {
-                    customData(currentRowAnalysisResultLinkedHashMap, entry, user, false);
-                }
+                customData(currentRowAnalysisResultLinkedHashMap, entry, user, key.equals(columnIndex));
             }
 
             log.debug("异常数据处理结果：{}", user);
