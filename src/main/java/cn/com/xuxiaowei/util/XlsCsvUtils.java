@@ -35,11 +35,14 @@ public class XlsCsvUtils implements HSSFListener {
      */
     private boolean blankline = true;
 
-    private int minColumns;
-    private POIFSFileSystem fs;
-    private PrintStream output;
+    private final int minColumns;
+
+    private final POIFSFileSystem fs;
+
+    private final PrintStream output;
 
     private int lastRowNumber;
+
     private int lastColumnNumber;
 
     /**
@@ -51,26 +54,32 @@ public class XlsCsvUtils implements HSSFListener {
      * 用于解析公式
      */
     private EventWorkbookBuilder.SheetRecordCollectingListener workbookBuildingListener;
+
     private HSSFWorkbook stubWorkbook;
 
     /**
      * 用于处理带有字符串结果的公式
      */
     private SSTRecord sstRecord;
+
     private FormatTrackingHSSFListener formatListener;
 
     /**
      * 所以我们知道我们在哪张纸上
      */
     private int sheetIndex = -1;
+
     private BoundSheetRecord[] orderedBsrs;
-    private List<BoundSheetRecord> boundSheetRecords = new ArrayList<>();
+
+    private final List<BoundSheetRecord> boundSheetRecords = new ArrayList<>();
 
     /**
      * 用于处理带有字符串结果的公式
      */
     private int nextRow;
+
     private int nextColumn;
+
     private boolean outputNextStringRecord;
 
     /**
