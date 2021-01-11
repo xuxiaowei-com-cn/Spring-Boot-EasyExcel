@@ -23,6 +23,11 @@ spring:
     username: root
     # 数据库 密码
     password: root
+  #
+  # Thymeleaf 配置
+  thymeleaf:
+    # 是否启用缓存
+    cache: false
 #
 # MyBatis Plus 配置
 mybatis-plus:
