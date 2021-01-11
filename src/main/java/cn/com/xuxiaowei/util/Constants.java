@@ -189,4 +189,9 @@ public final class Constants {
      */
     public static final String ID = "id";
 
+    /**
+     * Windows
+     */
+    public static final String WIN = "win";
+
 }
