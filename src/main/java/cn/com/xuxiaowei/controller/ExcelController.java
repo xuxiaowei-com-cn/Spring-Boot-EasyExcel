@@ -21,6 +21,7 @@ import com.alibaba.excel.EasyExcel;
 import com.alibaba.excel.support.ExcelTypeEnum;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
@@ -44,6 +45,20 @@ public class ExcelController {
     @Autowired
     public void setiUserService(IUserService iUserService) {
         this.iUserService = iUserService;
+    }
+
+    /**
+     * 上传 Excel 页面
+     *
+     * @param request  请求
+     * @param response 响应
+     * @param model    页面中的值
+     * @return 返回 上传 Excel 页面位置
+     */
+    @RequestMapping("/upload")
+    public String upload(HttpServletRequest request, HttpServletResponse response, Model model) {
+
+        return "excel/upload";
     }
 
     /**
