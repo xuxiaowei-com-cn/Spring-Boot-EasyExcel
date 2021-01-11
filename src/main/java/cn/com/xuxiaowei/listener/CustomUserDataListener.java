@@ -1,4 +1,4 @@
-package cn.com.xuxiaowei.easyexcel.read;
+package cn.com.xuxiaowei.listener;
 
 import cn.com.xuxiaowei.entity.User;
 import com.alibaba.excel.context.AnalysisContext;
@@ -29,7 +29,7 @@ import java.util.Map;
  * @author xuxiaowei
  */
 @Slf4j
-class CustomUserDataListener extends AnalysisEventListener<User> {
+public class CustomUserDataListener extends AnalysisEventListener<User> {
 
     private final User user;
 
