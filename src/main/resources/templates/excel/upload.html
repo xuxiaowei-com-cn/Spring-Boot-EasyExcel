@@ -10,11 +10,34 @@
 
 <h2>Upload</h2>
 
+<button type="button" class="layui-btn" id="upload-excel">
+    <i class="layui-icon">&#xe67c;</i>上传Excel
+</button>
+
 <script th:src="@{/layui-v2.5.7/layui.js}"></script>
 <script th:inline="javascript" type="text/javascript">
     // 项目绝对位置
     var ctxPath = /*[[@{/}]]*/ +'';
+    layui.use('upload', function () {
+        var upload = layui.upload;
 
+        // 执行实例
+        var uploadInst = upload.render({ // https://www.layui.com/doc/modules/upload.html
+            elem: '#upload-excel', //绑定元素
+            url: ctxPath + 'excel/upload/file', //上传接口
+            accept: 'file', // 上传文件类型
+            acceptMime: 'application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+            done: function (res) {
+                // 上传完毕回调
+                console.log('done', res)
+            },
+            error: function (res) {
+                // 请求异常回调
+                console.log('error', res)
+            }
+        });
+
+    });
 </script>
 
 </body>
