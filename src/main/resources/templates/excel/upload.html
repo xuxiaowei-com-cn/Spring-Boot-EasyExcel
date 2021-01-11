@@ -30,10 +30,26 @@
             done: function (res) {
                 // 上传完毕回调
                 console.log('done', res)
+
+                var code = res.code;
+                var msg = res.msg;
+
+                if (code === '00000') {
+                    layer.msg(msg, {time: 1500, icon: 1}, function () {
+
+                    });// 0：黄色感叹号，1：绿色对号，2：红色 X，3：黄色问号，4：灰色锁，5：红色哭脸，6：绿色笑脸，7：黄色感叹号，参见：layui/css/modules/layer/default/icon.png
+                } else {
+                    layer.msg(msg, {time: 1500, icon: 0}, function () {
+
+                    }); // 0：黄色感叹号，1：绿色对号，2：红色 X，3：黄色问号，4：灰色锁，5：红色哭脸，6：绿色笑脸，7：黄色感叹号，参见：layui/css/modules/layer/default/icon.png
+                }
             },
             error: function (res) {
                 // 请求异常回调
-                console.log('error', res)
+                console.error('error', res)
+                layer.msg(res, {time: 1500, icon: 2}, function () {
+
+                }); // 0：黄色感叹号，1：绿色对号，2：红色 X，3：黄色问号，4：灰色锁，5：红色哭脸，6：绿色笑脸，7：黄色感叹号，参见：layui/css/modules/layer/default/icon.png
             }
         });
 
