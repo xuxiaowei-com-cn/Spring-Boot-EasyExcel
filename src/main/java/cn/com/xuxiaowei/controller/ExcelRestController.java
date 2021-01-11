@@ -87,7 +87,7 @@ public class ExcelRestController {
 
                 String osName = System.getProperty("os.name");
 
-                if (osName.toLowerCase().startsWith("win")) {
+                if (osName.toLowerCase().startsWith(WIN)) {
                     pathname = mvcProperties.getFileUploadWindows() + path;
                 } else {
                     pathname = mvcProperties.getFileUploadLinux() + path;
