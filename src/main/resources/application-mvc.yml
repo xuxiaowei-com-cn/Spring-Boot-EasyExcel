@@ -1,0 +1,11 @@
+#
+# MVC 配置
+mvc:
+  # 文件路径
+  file-upload-resources: /uploads/**
+  # Windows
+  file-upload-windows: D:\uploads\
+  # Linux
+  file-upload-linux: /uploads/
+  # 文件上传返回路径
+  file-upload-return-url: /uploads/
