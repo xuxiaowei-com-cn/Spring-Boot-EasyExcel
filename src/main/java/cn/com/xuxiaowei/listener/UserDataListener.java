@@ -1,4 +1,4 @@
-package cn.com.xuxiaowei.easyexcel.read;
+package cn.com.xuxiaowei.listener;
 
 import cn.com.xuxiaowei.entity.User;
 import cn.com.xuxiaowei.service.IUserService;
@@ -21,7 +21,7 @@ import java.util.List;
  * @since 0.0.1
  */
 @Slf4j
-class UserDataListener extends AnalysisEventListener<User> {
+public class UserDataListener extends AnalysisEventListener<User> {
 
     private User user;
 
