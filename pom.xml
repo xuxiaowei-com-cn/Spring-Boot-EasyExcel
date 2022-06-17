@@ -39,7 +39,7 @@
 
         <!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
         <!-- 阿里巴巴 JSON 处理 -->
-        <fastjson.version>1.2.75</fastjson.version>
+        <fastjson.version>1.2.83</fastjson.version>
 
 
         <!-- 性能分析插件 -->
